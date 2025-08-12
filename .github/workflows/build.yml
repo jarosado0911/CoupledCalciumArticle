@@ -1,0 +1,52 @@
+name: Build LaTeX PDFs
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed to commit the generated PDFs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # Compile the LaTeX sources at the repo root (uses latexmk + your latexmkrc)
+      - name: Build PDFs with latexmk
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            docsiamart.tex
+            ex_article.tex
+            ex_shared.tex
+            ex_supplement.tex
+          latexmk_use_xelatex: false
+          # add common extras if you ever need them:
+          # pre_compile: sudo apt-get update && sudo apt-get install -y biber
+
+      - name: Collect PDFs into pdf/
+        run: |
+          mkdir -p pdf
+          # move any freshly built PDFs from root into pdf/
+          shopt -s nullglob
+          for f in *.pdf; do
+            mv "$f" "pdf/$f"
+          done
+
+      - name: Upload PDFs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDFs
+          path: pdf/*.pdf
+
+      - name: Commit PDFs back to the repo
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "CI: build PDFs"
+          file_pattern: "pdf/*.pdf"
