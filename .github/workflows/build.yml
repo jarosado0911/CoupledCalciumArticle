@@ -22,7 +22,6 @@ jobs:
         with:
           root_file: |
             ex_article.tex
-            ex_shared.tex
             ex_supplement.tex
           latexmk_shell_escape: false
           extra_system_packages: ""   # add biber or others if your .tex needs them
