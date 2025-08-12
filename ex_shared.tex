@@ -1,0 +1,62 @@
+% SIAM Shared Information Template
+% This is information that is shared between the main document and any
+% supplement. If no supplement is required, then this information can
+% be included directly in the main document.
+
+
+% Packages and macros go here
+\usepackage{lipsum}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{algorithmic}
+\ifpdf
+  \DeclareGraphicsExtensions{.eps,.pdf,.png,.jpg}
+\else
+  \DeclareGraphicsExtensions{.eps}
+\fi
+
+% Add a serial/Oxford comma by default.
+\newcommand{\creflastconjunction}{, and~}
+\newcommand{\IP}{IP$_3$}
+\newcommand{\Ca}{$\textrm{Ca}^{2+}$~}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\cc}{$c_c$}
+\newcommand{\ce}{$c_e$}
+\newcommand{\co}{$c_o$}
+\newcommand{\btot}{$b^{tot}$}
+\newcommand{\betot}{$b_e^{tot}$}
+\newcommand{\Dc}{$D_c$}
+\newcommand{\Db}{$D_b$}
+\newcommand{\Dce}{$D_{ce}$}
+\newcommand{\Dbe}{$D_{be}$}
+\newcommand{\ER}{Endoplasmic Reticulum}
+
+% Used for creating new theorem and remark environments
+\newsiamremark{remark}{Remark}
+\newsiamremark{hypothesis}{Hypothesis}
+\crefname{hypothesis}{Hypothesis}{Hypotheses}
+\newsiamthm{claim}{Claim}
+
+% Sets running headers as well as PDF title and authors
+\headers{A computational study of Alzheimer's disease}{P. Borole, J. M. Rosado, M. Neal, and G. Queisser}
+
+% Title. If the supplement option is on, then "Supplementary Material"
+% is automatically inserted before the title.
+\title{Neuronal Resilience and Calcium Signaling Pathways in the Context of Synapse Loss and Calcium Leaks: A computational modelling study and Implications for Alzheimer's Disease\thanks{Submitted to the editors \today}}
+%\funding{This work was funded by the Fog Research Institute under contract no.~FRI-454.}}}
+
+% Authors: full names plus addresses.
+\author{
+Piyush Borole\thanks{University of Edinburgh, Edinburgh, Scotland, United Kingdom}
+\and James M. Rosado\thanks{Department of Mathematics, Temple University, Philadelphia, Pennsylvania, U.S.A.}
+\and MeiRose Neal\footnotemark[3]
+ \and Gillian Queisser\footnotemark[3] 
+}
+\usepackage{amsopn}
+\DeclareMathOperator{\diag}{diag}
+
+%%% Local Variables: 
+%%% mode:latex
+%%% TeX-master: "ex_article"
+%%% End: 
